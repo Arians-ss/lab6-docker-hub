@@ -26,6 +26,7 @@ jobs:
       - name: Login to Docker Hub
         uses: docker/login-action@v2
         with:
+          registry: docker.io
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Build and push to Docker Hub
@@ -33,4 +34,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: arians-ss/lab6-docker-hub:latest
+          tags: arina08/lab6-docker-hub:latest
