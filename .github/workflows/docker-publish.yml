@@ -29,6 +29,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Sanity check secrets (length only)
+        run: |
+          echo "USER_LEN=${#USERNAME}"
+          echo "TOKEN_LEN=${#TOKEN}"
+        shell: bash
+        env:
+          USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+
       - name: Login to Docker Hub
         uses: docker/login-action@v2
         with:
